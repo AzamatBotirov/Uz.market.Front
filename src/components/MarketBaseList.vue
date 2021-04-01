@@ -46,7 +46,7 @@
             </el-table-column>
 
             <el-table-column
-                    prop="date1"
+                    prop="marketBase.date"
                     label="Yaroqlilik  mudati"
                     width="95">
             </el-table-column>

@@ -22,7 +22,7 @@
             </el-col>
 
             <el-col :span="5" style=" margin: 5px; float: left; ">
-                <el-date-picker type="date" placeholder="Pick a date" v-model="marketBase.date1"
+                <el-date-picker type="date" placeholder="Pick a date" v-model="marketBase.date"
                                 style="width: 100%;"></el-date-picker>
             </el-col>
             <el-col :span="5" style=" margin-top: 5px; float: left; ">
@@ -59,7 +59,7 @@
                     width="100">
             </el-table-column>
             <el-table-column
-                    prop="date1"
+                    prop="date"
                     label="Yaroqlilik mudati">
             </el-table-column>
             <el-table-column
@@ -88,7 +88,7 @@
                     quantity: null,
                     price: null,
                     currentPrice: null,
-                    date1: '',
+                    date: '',
                     product: {
                         id: null,
                         name: null,

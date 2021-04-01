@@ -72,7 +72,8 @@
                             label="O`chirish"
                             width="60">
                         <template #default="{row}">
-                            <el-button type="danger" icon="el-icon-delete" @click="deleteRoe(row)" circle></el-button>
+                            <el-button type="danger" icon="el-icon-delete" @click="deleteRoe(row)" circle
+                                       v-if="hashAnyAuth('ROLE_ADMIN') && authenticated"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -181,6 +182,7 @@
 
 <script>
     import axios from 'axios'
+    import AccountService from "../account/account.service";
 
     export default {
 
@@ -211,7 +213,21 @@
                 cenDialogVisible: false,
             }
         },
+        computed: {
+            authenticated() {
+                return this.$store.getters.authenticated;
+            }
+        },
+
         methods: {
+            hashAnyAuth(authorities) {
+                new AccountService(this.$router, this.$store)
+                    .hasAnyAuthorityAndAuth(authorities)
+                    .then(value => {
+                        this.hasAnyAuthorityValue = value;
+                    });
+                return this.hasAnyAuthorityValue;
+            },
 
             getProduct() {
                 axios
